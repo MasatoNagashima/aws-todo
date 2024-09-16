@@ -1,6 +1,7 @@
 // pages/api/todos.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import db from '@/lib/db'
+import { ResultSetHeader } from 'mysql2';
 
 type Todo = {
   id: number;
@@ -24,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      const [result] = await db.query('INSERT INTO todos (task, completed) VALUES (?, ?)', [task, false]);
+      const [result] = await db.query<ResultSetHeader>('INSERT INTO todos (task, completed) VALUES (?, ?)', [task, false]);
       res.status(201).json({ id: result.insertId, task, completed: false });
     } catch (err) {
       res.status(500).json({ message: 'Error adding todo' });
