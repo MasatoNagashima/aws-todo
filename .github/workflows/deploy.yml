@@ -28,7 +28,7 @@ jobs:
         username: ${{ secrets.USERNAME_PROD }}
         key: ${{ secrets.SSH_KEY_PROD }}
         script: |
-          cd /home/ubuntu/xxxx
+          cd /home/ec2-user/aws-todo
           git pull
           npm install
           npx prisma migrate deploy
