@@ -3,12 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import db from '@/lib/db'
 import { ResultSetHeader } from 'mysql2';
 
-type Todo = {
-  id: number;
-  task: string;
-  completed: boolean;
-};
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     try {
