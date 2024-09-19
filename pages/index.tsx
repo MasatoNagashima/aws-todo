@@ -1,5 +1,5 @@
 // pages/index.tsx
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 type Todo = {
   id: number;
@@ -11,15 +11,15 @@ const Home = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTask, setNewTask] = useState('');
 
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const res = await fetch('/api/todos');
-      const data = await res.json();
-      // setTodos(data);
-    };
+  // useEffect(() => {
+  //   const fetchTodos = async () => {
+  //     const res = await fetch('/api/todos');
+  //     const data = await res.json();
+  //     setTodos(data);
+  //   };
 
-    fetchTodos();
-  }, []);
+  //   fetchTodos();
+  // }, []);
 
   const handleAddTodo = async () => {
     if (!newTask.trim()) return;
